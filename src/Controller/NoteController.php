@@ -38,28 +38,32 @@ class NoteController extends AbstractController
     }
 
     /**
-     * @Route("/{uuid}", name=":read")
+     * @Route("/{id}", name=":read")
      */
-    public function read($uuid)
+    public function read($id)
     {
         return $this->render('note/read.html.twig', [
-            'id' => $uuid
+            'id' => $id
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name=":update")
      */
-    public function update()
+    public function update($id)
     {
-        return $this->render('note/update.html.twig');
+        return $this->render('note/update.html.twig', [
+            'id' => $id
+        ]);
     }
 
     /**
      * @Route("/{id}/delete", name=":delete")
      */
-    public function delete()
+    public function delete($id)
     {
-        return $this->render('note/delete.html.twig');
+        return $this->render('note/delete.html.twig', [
+            'id' => $id
+        ]);
     }
 }
