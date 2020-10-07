@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Note;
 use App\Form\NoteType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\NoteRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/note", name="note")
@@ -19,16 +22,15 @@ class NoteController extends AbstractController
 
     /**
      * @Route("s", name=":index")
-     * 
      * Route("/notes", name="note:index")
      * 
      * path : /notes
      * name: note:index
      */
-    public function index()
+    public function index(NoteRepository $noteRepository)
     {
         return $this->render('note/index.html.twig', [
-            'controller_name' => 'NoteController',
+            'notes' => $noteRepository->findAll()
         ]);
     }
 
@@ -36,12 +38,55 @@ class NoteController extends AbstractController
      * @Route("", name=":create")
      * Route("/note", name="note:create")
      */
-    public function create()
+    public function create(Request $request)
     {
-        // Création du formulaire basé sur la classe "NoteType"
-        $form = $this->createForm(NoteType::class);
+        // Création d'une nouvelle entité "Note"
+        $note = new Note;
 
-        // ...
+        // dump($request->getMethod());
+        // dump($note);
+
+        // Création du formulaire basé sur la classe "NoteType"
+        $form = $this->createForm(NoteType::class, $note);
+
+        // Handle the Request
+        $form->handleRequest($request);
+
+        // $request
+        // ->Attrape des données de la requete
+        // ->$name = $_POST['name'];
+
+        // Catch form submission
+        if ( $form->isSubmitted() ) 
+        {
+            // $form->isSubmitted() 
+            // -> Test la methode HTTP === POST
+
+            // $form->isValid()
+            // -> Controle de données
+
+
+            // Manip de données
+            // dd($note);
+
+
+            // Requete 'INSERT INTO ....'
+            // Requete 'UPDATE ...'
+            // Equivalent de la connexion PDO
+            $em = $this->getDoctrine()->getManager();
+
+            // Ajoute à la memoire de PDO la requete d'insert ou update
+            $em->persist($note); 
+            // Execute la requet
+            $em->flush();
+
+
+
+            // redirige l'utilisateur
+            return $this->redirectToRoute("note:index");
+
+        }
+
 
         // Création de la vue du formulaire
         $form = $form->createView();
@@ -72,6 +117,19 @@ class NoteController extends AbstractController
         $form = $this->createForm(NoteType::class);
 
         // ...
+
+        // Test la methode HTTP === POST
+            // Attrape des données de la requete
+            // $name = $_POST['name'];
+
+            // Controle de données
+
+            // Requete 'INSERT INTO ....'
+            // Requete 'UPDATE ...'
+
+            // redirige l'utilisateur
+
+
 
         // Création de la vue du formulaire
         $form = $form->createView();
