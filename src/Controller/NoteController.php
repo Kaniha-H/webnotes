@@ -5,10 +5,16 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/note", name="note")
+ */
 class NoteController extends AbstractController
 {
     /**
-     * @Route("/note", name="note")
+     * @Route("s", name=":index")
+     * 
+     * path : /notes
+     * name: note:index
      */
     public function index()
     {
@@ -16,4 +22,6 @@ class NoteController extends AbstractController
             'controller_name' => 'NoteController',
         ]);
     }
+
+    
 }
