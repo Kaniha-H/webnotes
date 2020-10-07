@@ -10,11 +10,11 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class NoteController extends AbstractController
 {
-    // Liste des notes          /notes
-    // Creation d'une note      /note
-    // Lire une note            /note/{id}
-    // MAJ d'une note           /note/{id}/edit
-    // Supprimer d'une note     /note/{id}/delete
+    // Liste des notes          note:index      /notes
+    // Creation d'une note      note:create     /note
+    // Lire une note            note:read       /note/{id}
+    // MAJ d'une note           note:update     /note/{id}/edit
+    // Supprimer d'une note     note:delete     /note/{id}/delete
 
     /**
      * @Route("s", name=":index")
@@ -38,11 +38,13 @@ class NoteController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name=":read")
+     * @Route("/{uuid}", name=":read")
      */
-    public function read()
+    public function read($uuid)
     {
-        return $this->render('note/read.html.twig');
+        return $this->render('note/read.html.twig', [
+            'id' => $uuid
+        ]);
     }
 
     /**
