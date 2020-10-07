@@ -19,6 +19,8 @@ class NoteController extends AbstractController
     /**
      * @Route("s", name=":index")
      * 
+     * Route("/notes", name="note:index")
+     * 
      * path : /notes
      * name: note:index
      */
@@ -31,6 +33,7 @@ class NoteController extends AbstractController
 
     /**
      * @Route("", name=":create")
+     * Route("/note", name="note:create")
      */
     public function create()
     {
@@ -39,6 +42,7 @@ class NoteController extends AbstractController
 
     /**
      * @Route("/{id}", name=":read")
+     * Route("/note/{id}", name="note:read")
      */
     public function read($id)
     {
@@ -49,6 +53,7 @@ class NoteController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name=":update")
+     * Route("/note/{id}/edit", name="note:update")
      */
     public function update($id)
     {
@@ -59,6 +64,7 @@ class NoteController extends AbstractController
 
     /**
      * @Route("/{id}/delete", name=":delete")
+     * Route("/note/{id}/delete", name="note:delete")
      */
     public function delete($id)
     {
