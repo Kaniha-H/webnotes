@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\NoteType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -28,16 +29,23 @@ class NoteController extends AbstractController
      */
     public function create()
     {
-        return $this->render('note/create.html.twig');
+        // Attention : mettre manuellement use App\Form\NoteType;
+        $form = $this->createForm(NoteType::class);
+
+        $form = $form->createView();
+
+        return $this->render('note/create.html.twig', [
+            'form' => $form // passe le formulaire à la vue Twig
+        ]);
     }
 
     /**
      * @Route("/{id}", name=":read")
      */
-    public function read($uuid)
+    public function read($id)
     {
         return $this->render('note/read.html.twig', [
-            'id' => $uuid;
+            'id' => $id
         ]);
         
     }
@@ -45,18 +53,22 @@ class NoteController extends AbstractController
     /**
      * @Route("/{id}/edit", name=":update")
      */
-    public function update()
+    public function update($id)
     {
-        return $this->render('note/update.html.twig');
+        return $this->render('note/update.html.twig', [
+            'id' => $id
+        ]);
         
     }
 
     /**
      * @Route("/{id}/delete", name=":delete")
      */
-    public function delete()
+    public function delete($id)
     {
-        return $this->render('note/delete.html.twig');
+        return $this->render('note/delete.html.twig', [
+            'id' => $id
+        ]);
         
     }
 }
