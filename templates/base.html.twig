@@ -1,33 +1,42 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}WebNotes !{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="{{ path('homepage') }}">Webnotes</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#webnotes-navbar" aria-controls="webnotes-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="webnotes-navbar">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ path('homepage') }}">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('note:index') }}">Notes</a>
-                        </li>
-                    </ul>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}WebNotes !{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+</head>
 
-                </div>
-            </nav>
-        </header>
+<body>
 
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+            <a class="navbar-brand" href="{{ path('homepage') }}">WebNotes</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#webnotes-navbar" aria-controls="webnotes-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="webnotes-navbar">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('homepage') }}">Accueil</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('note:index') }}">Notes</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    {% block body %}{% endblock %}
+
+    {% block javascripts %}{% endblock %}
+</body>
+
 </html>

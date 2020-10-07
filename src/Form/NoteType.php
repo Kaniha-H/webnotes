@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Note;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,49 +14,65 @@ class NoteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            // titre de la note
+
+            // Titre de la note
             ->add('title', TextType::class, [
+                // Texte et Attributs de la balise <label>
                 'label' => "Titre de la note",
                 'label_attr' => [
                     'class' => 'col-sm-3 col-form-label'
                 ],
 
-                'require' => true,
+                // Definir si le champ est obligatoire ou non
+                'required' => true,
 
+                // Attributs du champ <input>
                 'attr' => [
-                    'class' => "form-control"
+                    'class' => "form-control",
                     // 'placeholder' => "Saisir la note"
                 ],
 
+                // Texte d'aide
                 'help' => "Saisir le titre de votre note",
-                'help' => [
+                'help_attr' => [
                     'class' => "form-text text-muted"
                 ]
+
+                // Contraintes
+                // ...
             ])
 
-            // contenu de la note
+            // Contenu de la note
             ->add('content', TextareaType::class, [
+                // Texte et Attributs de la balise <label>
                 'label' => "Contenu de la note",
                 'label_attr' => [
                     'class' => 'col-sm-3 col-form-label'
                 ],
 
-                'require' => true,
+                // Definir si le champ est obligatoire ou non
+                'required' => true,
 
+                // Attributs du champ <input>
                 'attr' => [
-                    'class' => "form-control"
+                    'class' => "form-control",
                     // 'placeholder' => "Saisir la note"
                 ],
 
+                // Texte d'aide
                 'help' => "Saisir le contenu de votre note",
-                'help' => [
+                'help_attr' => [
                     'class' => "form-text text-muted"
                 ]
+
+                // Contraintes
+                // ...
             ])
 
             // ->add('illustration')
             // ->add('createAt')
             // ->add('isArchived')
+            
         ;
     }
 

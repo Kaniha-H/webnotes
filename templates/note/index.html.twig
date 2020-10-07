@@ -3,9 +3,27 @@
 {% block title %}Notes{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <header class="page-header">
-            <h2 class="page-title">Mes Notes</h2>
-        </header>
+<div class="container">
+
+    <header class="page-header">
+        <h2 class="page-title">Mes Notes</h2>
+    </header>
+
+    <div class="actions">
+        <a href="{{ path('note:create') }}" class="btn btn-secondary">Ajouter une note</a>
     </div>
+
+    <main>
+        <ul>
+            <li>Note</li>
+            <li>Note</li>
+            <li>Note</li>
+            <li>Note</li>
+            <li>Note</li>
+            <li>Note</li>
+            <li>Note</li>
+        </ul>
+    </main>
+
+</div>
 {% endblock %}

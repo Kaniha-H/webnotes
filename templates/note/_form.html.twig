@@ -1,9 +1,21 @@
 {{ form_start(form) }}
-    <div class="form-group">
-        {{ form_label(form.content) }}
-        {{ form_widget(form.content) }}
-        {{ form_errors(form.content) }}
-        {{ form_help(form.content) }}
-    </div>
-{{ form_end(form) }}
-    {# <button type="submit">{{ label | default("Créer la note") }}</button> #}
+
+{# Titre #}
+<div class="form-group">
+    {{ form_label(form.title) }}
+    {{ form_widget(form.title) }}
+    {{ form_errors(form.title) }}
+    {{ form_help(form.title) }}
+</div>
+
+{# Contenu #}
+<div class="form-group">
+    {{ form_label(form.content) }}
+    {{ form_widget(form.content) }}
+    {{ form_errors(form.content) }}
+    {{ form_help(form.content) }}
+</div>
+
+<button type="submit">{{ btn_label | default("Créer la note") }}</button>
+
+{{ form_end(form, {'render_rest': false}) }}
