@@ -1,10 +1,21 @@
-<form action="" method="post">
+{{ form_start(form) }}
 
-    <div class="form-group">
-        <label for="title">Titre de la note</label>
-        <input type="text" class="form-control" id="title" name="title">
-    </div>
+{# Titre #}
+<div class="form-group">
+    {{ form_label(form.title) }}
+    {{ form_widget(form.title) }}
+    {{ form_errors(form.title) }}
+    {{ form_help(form.title) }}
+</div>
 
-    <button type="submit">{{ label | default("Créer la note") }}</button>
+{# Contenu #}
+<div class="form-group">
+    {{ form_label(form.content) }}
+    {{ form_widget(form.content) }}
+    {{ form_errors(form.content) }}
+    {{ form_help(form.content) }}
+</div>
 
-</form>
+<button type="submit">{{ btn_label | default("Créer la note") }}</button>
+
+{{ form_end(form, {'render_rest': false}) }}
