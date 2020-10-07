@@ -13,15 +13,13 @@
         <a href="{{ path('note:create') }}" class="btn btn-secondary">Ajouter une note</a>
     </div>
 
+    {{ dump(notes) }}
+
     <main>
         <ul>
-            <li>Note</li>
-            <li>Note</li>
-            <li>Note</li>
-            <li>Note</li>
-            <li>Note</li>
-            <li>Note</li>
-            <li>Note</li>
+        {% for note in notes %}
+            <li>{{ note.title }} ( <a href="{{ path('note:read', {id: note.id}) }}">voir</a> <a href="{{ path('note:update', {id: note.id}) }}">edit</a> )</li>
+        {% endfor %}
         </ul>
     </main>
 
