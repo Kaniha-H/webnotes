@@ -47,4 +47,5 @@ security:
     access_control:
         # - { path: ^/categories, roles: ROLE_ADMIN }
         # - { path: ^/notes, roles: ROLE_USER }
+        # - { path: ^/note*, roles: ROLE_USER }
         # - { path: ^/categories, roles: ROLE_USER }

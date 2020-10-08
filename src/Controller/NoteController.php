@@ -29,6 +29,11 @@ class NoteController extends AbstractController
      */
     public function index(NoteRepository $noteRepository)
     {
+        if (!$this->getUser()) 
+        {
+            return $this->redirectToRoute('app_login');
+        }
+
         // ...
         return $this->render('note/index.html.twig', [
             'notes' => $noteRepository->findAll()

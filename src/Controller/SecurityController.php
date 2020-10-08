@@ -42,6 +42,8 @@ class SecurityController extends AbstractController
                 $user->setEmail( $data['email'] );
                 $user->setPassword( $password );
                 $user->setScreenname();
+
+                // $user->setRoles(['ROLE_ADMIN']);
     
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user); 
@@ -63,16 +65,21 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+        // app.user
+        if ($this->getUser()) 
+        {
+            return $this->redirectToRoute('homepage');
+        }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
+        // $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        return $this->render('security/login.html.twig', [
+            // 'last_username' => $lastUsername, 
+            'error' => $error
+        ]);
     }
 
     /**

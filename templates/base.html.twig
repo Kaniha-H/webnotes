@@ -43,7 +43,7 @@
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     {# Utilisateur identifié #}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">user.screenname</a>
+                        <a class="nav-link" href="#">{{ app.user.screenname }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
@@ -64,7 +64,9 @@
         </nav>
     </header>
 
-    {# {{ dump(is_granted('ROLE_ADMIN')) }}
+    {# {{ dump( app.user) }} #}
+    {# {{ dump(is_granted('ROLE_USER')) }}
+    {{ dump(is_granted('ROLE_ADMIN')) }}
     {{ dump(is_granted('IS_AUTHENTICATED_FULLY')) }}
     {{ dump(is_granted('IS_AUTHENTICATED_REMEMBERED')) }} #}
 
