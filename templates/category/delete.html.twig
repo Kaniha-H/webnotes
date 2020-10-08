@@ -1,7 +1,26 @@
 {% extends 'base.html.twig' %}
+{% set title = "Suppression d'une catégorie" %}
 
-{% block title %}Suppression d'une catégorie{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{#% block title title %#}
 
 {% block body %}
-Infos de la categorie à supprimer
+<div class="container">
+    
+    <header class="page-header">
+        <h2 class="page-title">{{ title }}</h2>
+    </header>
+
+    <main>
+        <form method="POST" action="{{ path('category:delete', {id: category.id}) }}">
+            <input type="hidden" name="_method" value="DELETE">
+
+            <p>Confirmer la Suppression de la categorie : {{ category.name }} ?</p>
+
+            <button type="submit" class="btn btn-danger">OUI</button>
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='{{ path('category:index') }}';">NON</button>
+        </form>
+    </main>
+
+</div>
 {% endblock %}
