@@ -34,9 +34,39 @@
                     </li>
                     
                 </ul>
+
+
+                {# Menu utilisateur #}
+                <ul class="navbar-nav ml-auto">
+                {# is_granted('ROLE_ADMIN') #}
+                {# is_granted('IS_AUTHENTICATED_FULLY') #}
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    {# Utilisateur identifié #}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">user.screenname</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
+                    </li>
+
+                {% else %}
+                    {# Utilisateur Anonyme #}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                    </li>
+
+                {% endif %}
+                </ul>
             </div>
         </nav>
     </header>
+
+    {# {{ dump(is_granted('ROLE_ADMIN')) }}
+    {{ dump(is_granted('IS_AUTHENTICATED_FULLY')) }}
+    {{ dump(is_granted('IS_AUTHENTICATED_REMEMBERED')) }} #}
 
     {% block body %}{% endblock %}
 

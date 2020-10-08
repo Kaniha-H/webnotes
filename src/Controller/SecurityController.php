@@ -2,13 +2,43 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\User;
+use App\Form\RegisterType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
+    /**
+     * @Route("/register", name="app_register")
+     */
+    public function register(Request $request)
+    {
+        $form = $this->createForm(RegisterType::class);
+
+        $form->handleRequest($request);
+
+        if ( $form->isSubmitted() ) 
+        {
+            $user = new User;
+
+
+            
+            dump($user);
+            dd($request);
+
+        }
+
+        $form = $form->createView();
+
+        return $this->render('security/register.html.twig', [
+            'form' => $form
+        ]);
+    }
+
     /**
      * @Route("/login", name="app_login")
      */
