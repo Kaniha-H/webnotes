@@ -151,17 +151,18 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getScreenname(): ?sting
+    public function getScreenname(): ?string
     {
-       return $this->screenname;
+        return $this->screenname;
     }
 
-    public function setScreenname(string $screenname): self
+    public function setScreenname(): self
     {
         $firstname = $this->firstname;
         $lastname = substr($this->lastname, 0, 1);
-
+        
         $this->screenname = "{$firstname} {$lastname}.";
+
         return $this;
     }
 }
