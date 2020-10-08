@@ -64,7 +64,9 @@
         </nav>
     </header>
 
-    {# {{ dump(is_granted('ROLE_ADMIN')) }}
+    {# {{ dump( app.user) }} #}
+    {# {{ dump(is_granted('ROLE_USER')) }}
+    {{ dump(is_granted('ROLE_ADMIN')) }}
     {{ dump(is_granted('IS_AUTHENTICATED_FULLY')) }}
     {{ dump(is_granted('IS_AUTHENTICATED_REMEMBERED')) }} #}
 
