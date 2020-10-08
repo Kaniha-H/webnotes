@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
-{% set title = "Modification d'une catégorie" %}
-{% block title %}Modification d'une catégorie{% endblock %}
+{% set title = "Modifier une catégorie" %}
+
+{% block title %}{{ title }}{% endblock %}
 
 {% block body %}
 <div class="container">
@@ -12,6 +13,4 @@
         {% include "category/_form.html.twig" with {btn_label: "Modifier la catégorie"} %}
     </main>
 </div>
-
-{% include "category/_form.html.twig" %}
 {% endblock %}

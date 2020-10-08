@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% set title = "Ajoute une catégorie" %}
-{% block title %}Création d'une catégorie{% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
 
 {% block body %}
 <div class="container">
@@ -9,9 +10,7 @@
     </header>
 
     <main>
-        {% {% include "category:create" %} %}
+        {% include "category/_form.html.twig" %}
     </main>
 </div>
-
-{% include "category/_form.html.twig" %}
 {% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Notes{% endblock %}
+
+{% block body %}
+{{ form_start(form) }}
+
+{# firstname #}
+<div class="form-group">
+    {{ form_label(form.firstname) }}
+    {{ form_widget(form.firstname) }}
+    {{ form_errors(form.firstname) }}
+    {{ form_help(form.firstname) }}
+</div>
+{# lastname #}
+<div class="container">
+    {{ form_label(form.lastname) }}
+    {{ form_widget(form.lastname) }}
+    {{ form_errors(form.lastname) }}
+    {{ form_help(form.lastname) }}
+</div>
+{# email #}
+<div class="container">
+    {{ form_label(form.email) }}
+    {{ form_widget(form.email) }}
+    {{ form_errors(form.email) }}
+    {{ form_help(form.email) }}
+</div>
+{# confirm email #}
+<div class="container">
+    {{ form_label(form.) }}
+    {{ form_widget(form.) }}
+    {{ form_errors(form.) }}
+    {{ form_help(form.) }}
+</div>
+{# password #}
+<div class="container">
+    {{ form_label(form.) }}
+    {{ form_widget(form.) }}
+    {{ form_errors(form.) }}
+    {{ form_help(form.) }}
+</div>
+{# confirm password #}
+<div class="container">
+    {{ form_label(form.) }}
+    {{ form_widget(form.) }}
+    {{ form_errors(form.) }}
+    {{ form_help(form.) }}
+</div>
+{# agreeTerms #}
+<div class="container">
+    {{ form_label(form.) }}
+    {{ form_widget(form.) }}
+    {{ form_errors(form.) }}
+    {{ form_help(form.) }}
+</div>
+{{ form_end(form) }}
+{% endblock %}

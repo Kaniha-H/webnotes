@@ -29,6 +29,7 @@ class NoteController extends AbstractController
      */
     public function index(NoteRepository $noteRepository)
     {
+        // ...
         return $this->render('note/index.html.twig', [
             'notes' => $noteRepository->findAll()
         ]);
@@ -84,9 +85,7 @@ class NoteController extends AbstractController
 
             // redirige l'utilisateur
             return $this->redirectToRoute("note:index");
-
         }
-
 
         // Création de la vue du formulaire
         $form = $form->createView();
@@ -100,10 +99,10 @@ class NoteController extends AbstractController
      * @Route("/{id}", name=":read")
      * Route("/note/{id}", name="note:read")
      */
-    public function read($id)
+    public function read(Note $note)
     {
         return $this->render('note/read.html.twig', [
-            'id' => $id
+            'note' => $note
         ]);
     }
 
@@ -111,32 +110,28 @@ class NoteController extends AbstractController
      * @Route("/{id}/edit", name=":update")
      * Route("/note/{id}/edit", name="note:update")
      */
-    public function update($id)
+    public function update(Note $note, Request $request)
     {
-        // Création du formulaire basé sur la classe "NoteType"
-        $form = $this->createForm(NoteType::class);
+        $form = $this->createForm(NoteType::class, $note);
 
-        // ...
+        $form->handleRequest($request);
 
-        // Test la methode HTTP === POST
-            // Attrape des données de la requete
-            // $name = $_POST['name'];
+        if ( $form->isSubmitted() )
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($note); 
+            $em->flush();
 
-            // Controle de données
+            return $this->redirectToRoute("note:read", [
+                'id' => $note->getId()
+            ]);
+        }
 
-            // Requete 'INSERT INTO ....'
-            // Requete 'UPDATE ...'
-
-            // redirige l'utilisateur
-
-
-
-        // Création de la vue du formulaire
         $form = $form->createView();
 
         return $this->render('note/update.html.twig', [
-            'id' => $id,
-            'form' => $form // Passe le formulaire à la vue Twig
+            'form' => $form, // Passe le formulaire à la vue Twig
+            'note' => $note
         ]);
     }
 

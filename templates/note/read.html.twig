@@ -4,9 +4,16 @@
 <div class="container">
 
     <header class="page-header">
-        <h2 class="page-title">Ma note ({{ id }}): xxxxx</h2>
+        <h2 class="page-title">Ma note ({{ note.id }}): xxxxx</h2>
     </header>
 
+    <div>
+        titre: {{ note.title }}
+    </div>
+    <div>
+        Date d'ajout: {{ note.createAt | date("Y-m-d H:i:s") }}
+    </div>
+    {{ dump(note) }}
 
 </div>
 {% endblock %}

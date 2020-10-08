@@ -1,7 +1,16 @@
 {% extends 'base.html.twig' %}
-{% block title %}une catégorie{% endblock %}
+{% set title = "Détails d'une catégorie" %}
+
+{% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-Form de la catégorie à lire
-{% include "category/_form.html.twig" %}
+<div class="container">
+    <header class="page-header">
+        <h2 class="page-title">{{ title }}</h2>
+    </header>
+
+    <main>
+        {{ dump(category) }}
+    </main>
+</div>
 {% endblock %}
