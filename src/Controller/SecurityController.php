@@ -9,13 +9,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends AbstractController
 {
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request)
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $form = $this->createForm(RegisterType::class);
 
@@ -23,13 +24,31 @@ class SecurityController extends AbstractController
 
         if ( $form->isSubmitted() ) 
         {
+            // Instance de l'utilisateur
             $user = new User;
 
+            // Récup des données du fromulaire "register"
+            $data = $request->request->get('register');
 
-            
-            dump($user);
-            dd($request);
+            if ($data['agreeTerms'])
+            {
+                $password = $passwordEncoder->encodePassword(
+                    $user,
+                    $data['password']
+                );
 
+                $user->setFirstname( $data['firstname'] );
+                $user->setLastname( $data['lastname'] );
+                $user->setEmail( $data['email'] );
+                $user->setPassword( $password );
+                $user->setScreenname();
+    
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user); 
+                $em->flush();
+                
+                return $this->redirectToRoute('app_login');
+            }
         }
 
         $form = $form->createView();
