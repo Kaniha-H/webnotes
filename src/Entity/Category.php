@@ -41,6 +41,16 @@ class Category
      */
     private $icon;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updateAt;
+
 
     // RELATIONS
     // --
@@ -50,11 +60,11 @@ class Category
 
     public function __construct()
     {
-        $this->color = array_rand(['#FF0000','#FF9900','#6EFF33','#0A15A4','#E70DFD','#FDF20D','#C8C8C8']);
+        $this->createAt = new \DateTime;
+        $this->setColor();
     }
 
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
 
 
     public function getId(): ?int
@@ -91,9 +101,11 @@ class Category
         return $this->color;
     }
 
-    public function setColor(string $color): self
+    public function setColor(): self
     {
-        $this->color = $color;
+        $colors = ['#FF0000','#FF9900','#6EFF33','#0A15A4','#E70DFD','#FDF20D','#C8C8C8'];
+        $randKey = array_rand($colors);
+        $this->color = $colors[$randKey];
 
         return $this;
     }
@@ -106,6 +118,30 @@ class Category
     public function setIcon(?string $icon): self
     {
         $this->icon = $icon;
+
+        return $this;
+    }
+
+    public function getCreateAt(): ?\DateTimeInterface
+    {
+        return $this->createAt;
+    }
+
+    public function setCreateAt(\DateTimeInterface $createAt): self
+    {
+        $this->createAt = $createAt;
+
+        return $this;
+    }
+
+    public function getUpdateAt(): ?\DateTimeInterface
+    {
+        return $this->updateAt;
+    }
+
+    public function setUpdateAt(?\DateTimeInterface $updateAt): self
+    {
+        $this->updateAt = $updateAt;
 
         return $this;
     }

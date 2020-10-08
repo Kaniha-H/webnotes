@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% set title = "Détails d'une catégorie" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <header class="page-header">
+        <h2 class="page-title">{{ title }}</h2>
+    </header>
+
+    <main>
+        {{ dump(category) }}
+    </main>
+</div>
+{% endblock %}
