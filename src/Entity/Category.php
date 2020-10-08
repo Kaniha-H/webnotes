@@ -50,11 +50,10 @@ class Category
 
     public function __construct()
     {
-        $this->color = array_rand(['#FF0000','#FF9900','#6EFF33','#0A15A4','#E70DFD','#FDF20D','#C8C8C8']);
+        $this->setColor();
     }
 
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
 
 
     public function getId(): ?int
@@ -88,6 +87,11 @@ class Category
 
     public function getColor(): ?string
     {
+
+        $colors = ['#FF0000','#FF9900','#6EFF33','#0A15A4','#E70DFD','#FDF20D','#C8C8C8'];
+        $randKey = array($colors);
+        $this->color = $color[$randKey];
+
         return $this->color;
     }
 
