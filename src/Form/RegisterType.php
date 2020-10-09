@@ -21,7 +21,7 @@ class RegisterType extends AbstractType
                 // Texte et Attributs de la balise <label>
                 'label' => "Prénom",
                 'label_attr' => [
-                    'class' => 'col-sm-3 col-form-label'
+                    'class' => 'sr-only'
                 ],
 
                 // Definir si le champ est obligatoire ou non
@@ -29,14 +29,14 @@ class RegisterType extends AbstractType
 
                 // Attributs du champ <input>
                 'attr' => [
-                    'class' => "form-control",
-                    // 'placeholder' => "Saisir la note"
+                    'class' => "",
+                    'placeholder' => "Prenom"
                 ],
 
                 // Texte d'aide
                 'help' => "Saisir votre prénom",
                 'help_attr' => [
-                    'class' => "form-text text-muted"
+                    'class' => ""
                 ]
 
                 // Contraintes
@@ -49,7 +49,7 @@ class RegisterType extends AbstractType
                 // Texte et Attributs de la balise <label>
                 'label' => "Nom",
                 'label_attr' => [
-                    'class' => 'col-sm-3 col-form-label'
+                    'class' => 'sr-only'
                 ],
 
                 // Definir si le champ est obligatoire ou non
@@ -57,14 +57,14 @@ class RegisterType extends AbstractType
 
                 // Attributs du champ <input>
                 'attr' => [
-                    'class' => "form-control",
-                    // 'placeholder' => "Saisir la note"
+                    'class' => "",
+                    'placeholder' => "Nom"
                 ],
 
                 // Texte d'aide
                 'help' => "Saisir votre Nom",
                 'help_attr' => [
-                    'class' => "form-text text-muted"
+                    'class' => ""
                 ]
 
                 // Contraintes
@@ -77,7 +77,7 @@ class RegisterType extends AbstractType
                 // Texte et Attributs de la balise <label>
                 'label' => "Email",
                 'label_attr' => [
-                    'class' => 'col-sm-3 col-form-label'
+                    'class' => 'sr-only'
                 ],
 
                 // Definir si le champ est obligatoire ou non
@@ -85,14 +85,14 @@ class RegisterType extends AbstractType
 
                 // Attributs du champ <input>
                 'attr' => [
-                    'class' => "form-control",
-                    // 'placeholder' => "Saisir la note"
+                    'class' => "",
+                    'placeholder' => "Email"
                 ],
 
                 // Texte d'aide
                 'help' => "Saisir votre adresse email",
                 'help_attr' => [
-                    'class' => "form-text text-muted"
+                    'class' => ""
                 ]
 
                 // Contraintes
@@ -105,7 +105,7 @@ class RegisterType extends AbstractType
                 // Texte et Attributs de la balise <label>
                 'label' => "Mot de passe",
                 'label_attr' => [
-                    'class' => 'col-sm-3 col-form-label'
+                    'class' => 'sr-only'
                 ],
 
                 // Definir si le champ est obligatoire ou non
@@ -113,14 +113,14 @@ class RegisterType extends AbstractType
 
                 // Attributs du champ <input>
                 'attr' => [
-                    'class' => "form-control",
-                    // 'placeholder' => "Saisir la note"
+                    'class' => "",
+                    'placeholder' => "Mot de passe"
                 ],
 
                 // Texte d'aide
                 'help' => "Saisir votre nouveau mot de passe",
                 'help_attr' => [
-                    'class' => "form-text text-muted"
+                    'class' => ""
                 ]
 
                 // Contraintes
