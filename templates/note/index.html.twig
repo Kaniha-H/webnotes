@@ -15,7 +15,7 @@
 
     <main>
         <ul>
-        {% for note in notes %}
+        {% for note in app.user.notes %}
             <li>{{ note.title }} ( <a href="{{ path('note:read', {id: note.id}) }}">voir</a> <a href="{{ path('note:update', {id: note.id}) }}">edit</a> )</li>
         {% endfor %}
         </ul>

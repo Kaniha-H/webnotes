@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\NoteRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\NoteRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=NoteRepository::class)
@@ -56,16 +57,20 @@ class Note
     private $isArchived = false;
 
     
+    
     // RELATIONS
     // --
-
+    
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="notes")
+     */
+    private $user;
 
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
     public function __construct()
     {
         $this->createAt = new \DateTime;
-        $this->user = new ArrayCollection();
     }
 
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -132,6 +137,18 @@ class Note
     public function setIsArchived(bool $isArchived): self
     {
         $this->isArchived = $isArchived;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

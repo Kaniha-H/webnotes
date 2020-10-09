@@ -13,6 +13,9 @@
     <div>
         Date d'ajout: {{ note.createAt | date("Y-m-d H:i:s") }}
     </div>
+    <div>
+        Créer par: {{ note.user.screenname }}
+    </div>
     {{ dump(note) }}
 
 </div>
