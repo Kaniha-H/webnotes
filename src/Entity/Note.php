@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\NoteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -63,6 +65,7 @@ class Note
     public function __construct()
     {
         $this->createAt = new \DateTime;
+        $this->user = new ArrayCollection();
     }
 
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
