@@ -72,48 +72,79 @@ class RegisterType extends AbstractType
                 // ...
 
             ])
-            
-            // email
-            ->add('email', EmailType::class, [
-                // Texte et Attributs de la balise <label>
-                'label' => "Email",
-                'label_attr' => [
-                    'class' => "sr-only",
-                ],
 
-                // Definir si le champ est obligatoire ou non
+            ->add('email', RepeatedType::class, [
+                'type' => EmailType::class,
                 'required' => true,
-
-                // Attributs du champ <input>
-                'attr' => [
-                    // 'class' => "form-control",
-                    'placeholder' => "Email",
+                'first_options' => [
+                    'label' => "Entrer votre email",
+                    'label_attr' => [
+                        'class' => "sr-only",
+                    ],
+                    'attr' => [
+                        'placeholder' => "Entrer votre email",
+                    ],
+                    'help' => "Saisir votre email",
+                    'help_attr' => [
+                        'class' => "form-text text-muted",
+                    ]
                 ],
-
-                // Texte d'aide
-                'help' => "Saisir votre adresse email",
-                'help_attr' => [
-                    'class' => "form-text text-muted",
+                'second_options' => [
+                    'label' => "Répéter votre email",
+                    'label_attr' => [
+                        'class' => "sr-only",
+                    ],
+                    'attr' => [
+                        'placeholder' => "Répéter votre email",
+                    ],
+                    'help' => "Répéter votre email",
+                    'help_attr' => [
+                        'class' => "form-text text-muted",
+                    ]
                 ],
-
-                // Contraintes
-                // ...
-
             ])
+           
+            // email
+            // ->add('email', EmailType::class, [
+            //     // Texte et Attributs de la balise <label>
+            //     'label' => "Email",
+            //     'label_attr' => [
+            //         'class' => "sr-only",
+            //     ],
+
+            //     // Definir si le champ est obligatoire ou non
+            //     'required' => true,
+
+            //     // Attributs du champ <input>
+            //     'attr' => [
+            //         // 'class' => "form-control",
+            //         'placeholder' => "Email",
+            //     ],
+
+            //     // Texte d'aide
+            //     'help' => "Saisir votre adresse email",
+            //     'help_attr' => [
+            //         'class' => "form-text text-muted",
+            //     ],
+
+            //     // Contraintes
+            //     // ...
+
+            // ])
             
             // password
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'required' => true,
                 'first_options' => [
-                    'label' => "Votre nouveau mot de passe",
+                    'label' => "Entrer votre mot de passe",
                     'label_attr' => [
                         'class' => "sr-only",
                     ],
                     'attr' => [
-                        'placeholder' => "Votre nouveau mot de passe",
+                        'placeholder' => "Entrer votre mot de passe",
                     ],
-                    'help' => "Saisir votre nouveau mot de passe",
+                    'help' => "Saisir Entrer votre mot de passe",
                     'help_attr' => [
                         'class' => "form-text text-muted",
                     ]
@@ -151,7 +182,7 @@ class RegisterType extends AbstractType
             //     ],
 
             //     // Texte d'aide
-            //     'help' => "Saisir votre nouveau mot de passe",
+            //     'help' => "Saisir Entrer votre email",
             //     'help_attr' => [
             //         'class' => "form-text text-muted"
             //     ]

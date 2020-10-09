@@ -18,6 +18,7 @@
                 {{ form_errors(form.firstname) }}
                 {{ form_help(form.firstname) }}
             </div>
+
             {# Lastname #}
             <div class="form-group">
                 {{ form_label(form.lastname) }}
@@ -28,17 +29,18 @@
             
             {# Email #}
             <div class="form-group">
-                {{ form_label(form.email) }}
-                {{ form_widget(form.email) }}
-                {{ form_errors(form.email) }}
-                {{ form_help(form.email) }}
+                {{ form_label(form.email.first) }}
+                {{ form_widget(form.email.first) }}
+                {{ form_errors(form.email.first) }}
+                {{ form_help(form.email.first) }}
             </div>
+                        
             {# Confirm Email #}
             <div class="form-group">
-                {# {{ form_label(form.) }} #}
-                {# {{ form_widget(form.) }} #}
-                {# {{ form_errors(form.) }} #}
-                {# {{ form_help(form.) }} #}
+                {{ form_label(form.email.second) }}
+                {{ form_widget(form.email.second) }}
+                {{ form_errors(form.email.second) }}
+                {{ form_help(form.email.second) }}
             </div>
             
             {# Password #}
