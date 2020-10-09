@@ -11,6 +11,9 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegisterType extends AbstractType
 {
@@ -35,15 +38,20 @@ class RegisterType extends AbstractType
                     'placeholder' => "Prénom"
                 ],
 
+                // 'mapped' => true,
+
                 // Texte d'aide
                 'help' => "Saisir votre prénom",
                 'help_attr' => [
                     'class' => "form-text text-muted"
-                ]
+                ],
 
                 // Contraintes
-                // ...
-
+                'constraints' => [
+                    new NotBlank([
+                        'message' => "Vous devez saisir votre prénom"
+                    ])
+                ],
             ])
         
             // lastname
@@ -67,10 +75,14 @@ class RegisterType extends AbstractType
                 'help' => "Saisir votre Nom",
                 'help_attr' => [
                     'class' => "form-text text-muted"
-                ]
+                ],
 
                 // Contraintes
-                // ...
+                'constraints' => [
+                    new NotBlank([
+                        'message' => "Vous devez saisir votre Nom"
+                    ])
+                ],
 
             ])
             
@@ -96,6 +108,16 @@ class RegisterType extends AbstractType
                     'help_attr' => [
                         'class' => "form-text text-muted",
                     ],
+
+                    // Contraintes
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => "Vous devez saisir votre adresse email"
+                        ]),
+                        new Email([
+                            'message' => "L'adresse email n'est pas valide"
+                        ]),
+                    ],
                 ],
                 'second_options' => [
                     'label' => "Repéter votre Email",
@@ -114,7 +136,12 @@ class RegisterType extends AbstractType
                     'help_attr' => [
                         'class' => "form-text text-muted",
                     ],
+
+                    // Contraintes
+                    'constraints' => [],
                 ],
+
+                'invalid_message' => "Les adresses email saisies ne correspondent pas."
             ])
 
             // ->add('email', EmailType::class, [
@@ -159,6 +186,17 @@ class RegisterType extends AbstractType
                     'help' => "Saisir votre nouveau mot de passe",
                     'help_attr' => [
                         'class' => "form-text text-muted",
+                    ],
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => "Vous devez saisir votre nouveau mot de passe"
+                        ]),
+                        new Length([
+                            'min' => 6,
+                            'minMessage' => "Votre nouveau mot de passe doit avoir {{ limit }} caractères minimum",
+                            'max' => 40,
+                            'maxMessage' => "Votre nouveau mot de passe doit avoir {{ limit }} caractères maximum",
+                        ]),
                     ]
                 ],
                 'second_options' => [
@@ -172,8 +210,10 @@ class RegisterType extends AbstractType
                     'help' => "Répéter votre mot de passe",
                     'help_attr' => [
                         'class' => "form-text text-muted",
-                    ]
+                    ],
                 ],
+
+                'invalid_message' => "Les mots de passe saisies ne correspondent pas."
             ])
             
 

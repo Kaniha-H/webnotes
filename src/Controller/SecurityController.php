@@ -46,12 +46,12 @@ class SecurityController extends AbstractController
                         $data['password']['first']
                     );
     
-                    $user->setFirstname( $data['firstname'] );
-                    $user->setLastname( $data['lastname'] );
-                    $user->setEmail( $data['email']['first'] );
                     $user->setPassword( $password );
                     $user->setScreenname();
-    
+                    
+                    // $user->setFirstname( $data['firstname'] );
+                    // $user->setLastname( $data['lastname'] );
+                    // $user->setEmail( $data['email']['first'] );
                     // $user->setRoles(['ROLE_ADMIN']);
     
         
