@@ -36,7 +36,8 @@ class NoteController extends AbstractController
 
         // ...
         return $this->render('note/index.html.twig', [
-            'notes' => $noteRepository->findAll()
+            // 'notes' => $noteRepository->findAll()
+            'notes' => $this->getUser()->getNotes()
         ]);
     }
 
@@ -73,6 +74,8 @@ class NoteController extends AbstractController
 
 
             // Manip de données
+            // Liaison d'un utilisateur à la note
+            $note->setUser($this->getUser());
             // dd($note);
 
 
