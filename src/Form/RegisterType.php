@@ -72,39 +72,50 @@ class RegisterType extends AbstractType
                 // ...
 
             ])
-
+            
+            // email
             ->add('email', RepeatedType::class, [
                 'type' => EmailType::class,
                 'required' => true,
+                
                 'first_options' => [
-                    'label' => "Entrer votre email",
+                    'label' => "Email",
                     'label_attr' => [
                         'class' => "sr-only",
                     ],
+
+                    // Attributs du champ <input>
                     'attr' => [
-                        'placeholder' => "Entrer votre email",
+                        // 'class' => "form-control",
+                        'placeholder' => "Email",
                     ],
-                    'help' => "Saisir votre email",
+
+                    // Texte d'aide
+                    'help' => "Saisir votre adresse email",
                     'help_attr' => [
                         'class' => "form-text text-muted",
-                    ]
+                    ],
                 ],
                 'second_options' => [
-                    'label' => "Répéter votre email",
+                    'label' => "Repéter votre Email",
                     'label_attr' => [
                         'class' => "sr-only",
                     ],
+
+                    // Attributs du champ <input>
                     'attr' => [
-                        'placeholder' => "Répéter votre email",
+                        // 'class' => "form-control",
+                        'placeholder' => "Repéter votre Email",
                     ],
-                    'help' => "Répéter votre email",
+
+                    // Texte d'aide
+                    'help' => "Saisir votre adresse email",
                     'help_attr' => [
                         'class' => "form-text text-muted",
-                    ]
+                    ],
                 ],
             ])
-           
-            // email
+
             // ->add('email', EmailType::class, [
             //     // Texte et Attributs de la balise <label>
             //     'label' => "Email",
