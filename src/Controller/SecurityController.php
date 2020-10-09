@@ -34,16 +34,17 @@ class SecurityController extends AbstractController
             {
                 $password = $passwordEncoder->encodePassword(
                     $user,
-                    $data['password']
+                    $data['password']['first']
                 );
 
                 $user->setFirstname( $data['firstname'] );
                 $user->setLastname( $data['lastname'] );
-                $user->setEmail( $data['email'] );
+                $user->setEmail( $data['email']['first'] );
                 $user->setPassword( $password );
                 $user->setScreenname();
 
                 // $user->setRoles(['ROLE_ADMIN']);
+
     
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user); 

@@ -74,32 +74,74 @@ class RegisterType extends AbstractType
             ])
             
             // email
-            ->add('email', EmailType::class, [
-                // Texte et Attributs de la balise <label>
-                'label' => "Email",
-                'label_attr' => [
-                    'class' => "sr-only",
-                ],
-
-                // Definir si le champ est obligatoire ou non
+            ->add('email', RepeatedType::class, [
+                'type' => EmailType::class,
                 'required' => true,
+                
+                'first_options' => [
+                    'label' => "Email",
+                    'label_attr' => [
+                        'class' => "sr-only",
+                    ],
 
-                // Attributs du champ <input>
-                'attr' => [
-                    // 'class' => "form-control",
-                    'placeholder' => "Email",
+                    // Attributs du champ <input>
+                    'attr' => [
+                        // 'class' => "form-control",
+                        'placeholder' => "Email",
+                    ],
+
+                    // Texte d'aide
+                    'help' => "Saisir votre adresse email",
+                    'help_attr' => [
+                        'class' => "form-text text-muted",
+                    ],
                 ],
+                'second_options' => [
+                    'label' => "Repéter votre Email",
+                    'label_attr' => [
+                        'class' => "sr-only",
+                    ],
 
-                // Texte d'aide
-                'help' => "Saisir votre adresse email",
-                'help_attr' => [
-                    'class' => "form-text text-muted",
+                    // Attributs du champ <input>
+                    'attr' => [
+                        // 'class' => "form-control",
+                        'placeholder' => "Repéter votre Email",
+                    ],
+
+                    // Texte d'aide
+                    'help' => "Saisir votre adresse email",
+                    'help_attr' => [
+                        'class' => "form-text text-muted",
+                    ],
                 ],
-
-                // Contraintes
-                // ...
-
             ])
+
+            // ->add('email', EmailType::class, [
+            //     // Texte et Attributs de la balise <label>
+            //     'label' => "Email",
+            //     'label_attr' => [
+            //         'class' => "sr-only",
+            //     ],
+
+            //     // Definir si le champ est obligatoire ou non
+            //     'required' => true,
+
+            //     // Attributs du champ <input>
+            //     'attr' => [
+            //         // 'class' => "form-control",
+            //         'placeholder' => "Email",
+            //     ],
+
+            //     // Texte d'aide
+            //     'help' => "Saisir votre adresse email",
+            //     'help_attr' => [
+            //         'class' => "form-text text-muted",
+            //     ],
+
+            //     // Contraintes
+            //     // ...
+
+            // ])
             
             // password
             ->add('password', RepeatedType::class, [
