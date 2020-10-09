@@ -19,45 +19,48 @@ class SecurityController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, ValidatorInterface $validator)
     {
+        // Instance de l'utilisateur
+        $user = new User;
+
         // Init the form $errors array
         $errors = [];
 
-        $form = $this->createForm(RegisterType::class);
+        $form = $this->createForm(RegisterType::class, $user);
 
         $form->handleRequest($request);
 
         if ( $form->isSubmitted() ) 
         {
-            // Instance de l'utilisateur
-            $user = new User;
-
-            // Contrle auto du form (Validator)
+            // Controle auto du form (Validator)
             $errors = $validator->validate($user);
 
-            // Récup des données du fromulaire "register"
-            $data = $request->request->get('register');
-
-            if ($data['agreeTerms'])
+            if ($form->isValid())
             {
-                $password = $passwordEncoder->encodePassword(
-                    $user,
-                    $data['password']['first']
-                );
-
-                $user->setFirstname( $data['firstname'] );
-                $user->setLastname( $data['lastname'] );
-                $user->setEmail( $data['email']['first'] );
-                $user->setPassword( $password );
-                $user->setScreenname();
-
-                // $user->setRoles(['ROLE_ADMIN']);
-
+                // Récup des données du fromulaire "register"
+                $data = $request->request->get('register');
     
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user); 
-                $em->flush();
-                
-                return $this->redirectToRoute('app_login');
+                if ($data['agreeTerms'])
+                {
+                    $password = $passwordEncoder->encodePassword(
+                        $user,
+                        $data['password']['first']
+                    );
+    
+                    $user->setFirstname( $data['firstname'] );
+                    $user->setLastname( $data['lastname'] );
+                    $user->setEmail( $data['email']['first'] );
+                    $user->setPassword( $password );
+                    $user->setScreenname();
+    
+                    // $user->setRoles(['ROLE_ADMIN']);
+    
+        
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($user); 
+                    $em->flush();
+                    
+                    return $this->redirectToRoute('app_login');
+                }
             }
         }
 

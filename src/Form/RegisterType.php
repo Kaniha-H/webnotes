@@ -3,13 +3,14 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RegisterType extends AbstractType
 {
@@ -38,10 +39,14 @@ class RegisterType extends AbstractType
                 'help' => "Saisir votre prénom",
                 'help_attr' => [
                     'class' => ""
-                ]
+                ],
 
                 // Contraintes
-                // ...
+                'contraints' => [
+                    new NotBlank([
+                        'message' => "Vous devez saisir votre prénom"
+                    ])
+                ],
 
             ])
         
@@ -66,10 +71,14 @@ class RegisterType extends AbstractType
                 'help' => "Saisir votre Nom",
                 'help_attr' => [
                     'class' => ""
-                ]
+                ],
 
                 // Contraintes
-                // ...
+                'contraints' => [
+                    new NotBlank([
+                        'message' => "Vous devez saisir votre nom"
+                    ])
+                ],
 
             ])
             
@@ -95,6 +104,15 @@ class RegisterType extends AbstractType
                     'help_attr' => [
                         'class' => "form-text text-muted",
                     ],
+
+                    'contraints' => [
+                        new NotBlank([
+                            'message' => "Vous devez saisir votre nom"
+                        ]),
+                        new Email([
+                            'message' => "L'adresse email n'est pas valide."
+                        ])
+                    ],
                 ],
                 'second_options' => [
                     'label' => "Repéter votre Email",
@@ -114,6 +132,9 @@ class RegisterType extends AbstractType
                         'class' => "form-text text-muted",
                     ],
                 ],
+
+                // Contraintes
+                'invalid_message' => "Les adresses email saisies ne corespondent pas."
             ])
 
             // ->add('email', EmailType::class, [
@@ -158,7 +179,19 @@ class RegisterType extends AbstractType
                     'help' => "Saisir Entrer votre mot de passe",
                     'help_attr' => [
                         'class' => "form-text text-muted",
-                    ]
+                    ],
+
+                    'contraints' => [
+                        new NotBlank([
+                            'message' => "Vous devez saisir votre mot de passe"
+                        ]),
+                        new Length([
+                            'min' => 6,
+                            'minMessage' => "Votre mot de passe doit avoir {{ limit }} caractères minimum",
+                            'max' => 40,
+                            'maxMessage' => "Votre mot de passe doit avoir {{ limit }} caractères maximum",
+                        ])
+                    ],
                 ],
                 'second_options' => [
                     'label' => "Répéter votre mot de passe",
@@ -173,6 +206,9 @@ class RegisterType extends AbstractType
                         'class' => "form-text text-muted",
                     ]
                 ],
+
+                // Contraintes
+                'invalid_message' => "Les mots de passe saisies ne corespondent pas."
             ])
             
 
@@ -225,8 +261,15 @@ class RegisterType extends AbstractType
                 //     'class' => "form-text text-muted"
                 // ]
 
+                'mapped' => false,
+                
                 // Contraintes
-                // ...
+                'constraints' => [
+                    new IsTrue([
+                        'message' => "Vous devez accepter les CGU",
+                    ]),
+                ],
+                
 
             ])
             
