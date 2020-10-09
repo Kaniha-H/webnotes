@@ -3,63 +3,74 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-{{ form_start(form) }}
+<div class="container">
+    <div class="row">
+        <div class="col-4 offset-4">
 
-{# Firstname #}
-<div class="form-group">
-    {{ form_label(form.firstname) }}
-    {{ form_widget(form.firstname) }}
-    {{ form_errors(form.firstname) }}
-    {{ form_help(form.firstname) }}
-</div>
-{# Lastname #}
-<div class="form-group">
-    {{ form_label(form.lastname) }}
-    {{ form_widget(form.lastname) }}
-    {{ form_errors(form.lastname) }}
-    {{ form_help(form.lastname) }}
-</div>
+            <h2>Inscription</h2>
 
-{# Email #}
-<div class="form-group">
-    {{ form_label(form.email) }}
-    {{ form_widget(form.email) }}
-    {{ form_errors(form.email) }}
-    {{ form_help(form.email) }}
-</div>
-{# Confirm Email #}
-<div class="form-group">
-    {# {{ form_label(form.) }} #}
-    {# {{ form_widget(form.) }} #}
-    {# {{ form_errors(form.) }} #}
-    {# {{ form_help(form.) }} #}
-</div>
+            {{ form_start(form) }}
+            
+            {# Firstname #}
+            <div class="form-group">
+                {{ form_label(form.firstname) }}
+                {{ form_widget(form.firstname) }}
+                {{ form_errors(form.firstname) }}
+                {{ form_help(form.firstname) }}
+            </div>
+            {# Lastname #}
+            <div class="form-group">
+                {{ form_label(form.lastname) }}
+                {{ form_widget(form.lastname) }}
+                {{ form_errors(form.lastname) }}
+                {{ form_help(form.lastname) }}
+            </div>
+            
+            {# Email #}
+            <div class="form-group">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+                {{ form_help(form.email) }}
+            </div>
+            {# Confirm Email #}
+            <div class="form-group">
+                {# {{ form_label(form.) }} #}
+                {# {{ form_widget(form.) }} #}
+                {# {{ form_errors(form.) }} #}
+                {# {{ form_help(form.) }} #}
+            </div>
+            
+            {# Password #}
+            <div class="form-group">
+                {{ form_label(form.password.first) }}
+                {{ form_widget(form.password.first) }}
+                {{ form_errors(form.password.first) }}
+                {{ form_help(form.password.first) }}
+            </div>
 
-{# Password #}
-<div class="form-group">
-    {{ form_label(form.password) }}
-    {{ form_widget(form.password) }}
-    {{ form_errors(form.password) }}
-    {{ form_help(form.password) }}
-</div>
-{# Confirm Password #}
-<div class="form-group">
-    {# {{ form_label(form.xxxx) }} #}
-    {# {{ form_widget(form.xxxx) }} #}
-    {# {{ form_errors(form.xxxx) }} #}
-    {# {{ form_help(form.xxxx) }} #}
-</div>
+            {# Confirm Password #}
+            <div class="form-group">
+                {{ form_label(form.password.second) }}
+                {{ form_widget(form.password.second) }}
+                {{ form_errors(form.password.second) }}
+                {{ form_help(form.password.second) }}
+            </div>
+            
+            {# AgreeTerms #}
+            <div class="form-group">
+                {# {{ form_label(form.agreeTerms) }} #}
+                {{ form_widget(form.agreeTerms) }}
+                <label class="ml-3 mb-0" for="{{ form.agreeTerms.vars.id }}">J'accepte les conditions d'utilisation.</label>
+                {{ form_errors(form.agreeTerms) }}
+                {# {{ form_help(form.agreeTerms) }} #}
+            </div>
+            
+            <button type="submit" class="btn btn-success">Je m'inscris</button>
+            
+            {{ form_end(form) }}
 
-{# AgreeTerms #}
-<div class="form-group">
-    {# {{ form_label(form.agreeTerms) }} #}
-    {{ form_widget(form.agreeTerms) }}
-    <label class="ml-3 mb-0" for="{{ form.agreeTerms.vars.id }}">J'accepte les conditions</label>
-    {{ form_errors(form.agreeTerms) }}
-    {# {{ form_help(form.agreeTerms) }} #}
+        </div>
+    </div>
 </div>
-
-<button type="submit" class="btn btn-succes">Je m'inscris</button>
-
-{{ form_end(form) }}
 {% endblock %}
