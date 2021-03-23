@@ -3,12 +3,13 @@
 {% block body %}
 <div class="container">
 
-    <header class="page-header">
+    <header class="page-header py-5 px-5">
         <h2 class="page-title">Editer la note : {{ note.id }}</h2>
     </header>
 
-    <main>
+    <main class="py-4">
         {% include "note/_form.html.twig" with {btn_label: "Modifier la note"} %}
+        <a href="{{ path('note:index') }}" class="mt-5 text-secondary">Retour</a>
     </main>
 
 </div>

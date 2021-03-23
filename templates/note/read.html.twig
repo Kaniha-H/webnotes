@@ -3,17 +3,18 @@
 {% block body %}
 <div class="container">
 
-    <header class="page-header">
-        <h2 class="page-title">Ma note ({{ note.id }}): xxxxx</h2>
+    <header class="page-header py-5 px-5">
+        <h2 class="page-title">Ma note n° {{ note.id }} : {{ note.title }}</h2>
     </header>
 
-    <div>
-        titre: {{ note.title }}
-    </div>
-    <div>
-        Date d'ajout: {{ note.createAt | date("Y-m-d H:i:s") }}
-    </div>
-    {{ dump(note) }}
+    <main class="py-4">
+        <h2>Titre : {{ note.title }}</h2>
+        <p>Contenu : {{ note.content }}</p>
+        <p>Date d'ajout : {{ note.createAt | date("Y-m-d H:i:s") }}</p>
+        <p>Créer par : {{ note.user.screenname }}</p>
+
+        <a href="{{ path('note:index') }}" class="mt-5 text-secondary">Retour</a>
+    </main>
 
 </div>
 {% endblock %}

@@ -1,16 +1,18 @@
 {% extends 'base.html.twig' %}
-{% set title = "Détails d'une catégorie" %}
+{% set title = "Détail de la catégorie" %}
 
 {% block title %}{{ title }}{% endblock %}
 
 {% block body %}
 <div class="container">
-    <header class="page-header">
+    <header class="page-header py-5 px-5">
         <h2 class="page-title">{{ title }}</h2>
     </header>
 
     <main>
-        {{ dump(category) }}
+        <h3 class="py-3">{{ category.name }}</h3>
+        <p class="py-1">{{ category.description }}</p>
     </main>
+    <a href="{{ path('category:index') }}" class="mt-5 text-secondary">Retour</a>
 </div>
 {% endblock %}

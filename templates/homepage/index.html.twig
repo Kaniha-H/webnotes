@@ -1,24 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container">
+<main class="container">
 
-    <div class="page-header">
+    <section class="page-header py-5 px-5">
         <h2 class="page-title">Bienvenu sur WebNotes</h2>
-    </div>
+        <p>Votre nouveau application pour enregistrer vos notes sans perdre de temps!</p>
+       
+    </section>
 
-    <div class="actions">
+    {# <div class="actions">
         <a href="{{ path('note:create') }}" class="btn btn-secondary">Ajouter une note</a>
-    </div>
+    </div> #}
 
-    <main>
+    <section class="py-5 mx-5">
+        <h2class="text-center">Webnotes en 3 étapes :</h2>
         <ul>
-            <li>Note</li>
-            <li>Note</li>
-            <li>Note</li>
-            <li>Note</li>
+            <li>1 - S'inscrire</li>
+            <li>2 - Se connecter</li>
+            <li>3 - Créer vos notes tout simplement!</li>
         </ul>
-    </main>
+    </section>
 
-</div>
+</main>
 {% endblock %}

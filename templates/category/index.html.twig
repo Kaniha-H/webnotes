@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% set title = "Liste des catégories !!!" %}
+{% set title = "Liste de vos catégories !!!" %}
 
 {% block title %}{{ title }}{% endblock %}
 {#% block title title %#}
@@ -7,19 +7,23 @@
 {% block body %}
 <div class="container">
     
-    <header class="page-header">
+    <header class="page-header py-5 px-5">
         <h2 class="page-title">{{ title }}</h2>
     </header>
 
-    <main>
+    <main class="py-5">
         <ul>
         {% for category in categories %}
-            <li>{{ category.name }} (<a href="{{ path('category:read', {id: category.id}) }}">voir</a>)</li>
+            <li class="py-2">{{ category.name }} &emsp; 
+                <a href="{{ path('category:read', {id: category.id}) }}" class="btn btn-secondary py-1">afficher</a>
+                <a href="{{ path('category:update', {id: category.id}) }}" class="btn btn-success py-1">modifier</a>
+                <a href="{{ path('category:delete', {id: category.id}) }}" class="btn btn-danger py-1">supprimer</a>
+            </li>
         {% else %}
-            <li>Aucune catégorie... <a href="{{ path('category:create') }}">Ajouter</a></li>
+            <li class="mt-3">Aucune catégorie...</li>
         {% endfor %}
         </ul>
+        <a href="{{ path('category:create') }}" class="btn btn-info mt-3">Ajouter une nouvelle catégorie</a>
     </main>
-
 </div>
 {% endblock %}

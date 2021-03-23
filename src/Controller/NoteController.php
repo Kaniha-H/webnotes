@@ -27,7 +27,8 @@ class NoteController extends AbstractController
      * path : /notes
      * name: note:index
      */
-    public function index(NoteRepository $noteRepository)
+    // public function index(NoteRepository $noteRepository)
+    public function index()
     {
         if (!$this->getUser()) 
         {
@@ -37,7 +38,7 @@ class NoteController extends AbstractController
         // ...
         return $this->render('note/index.html.twig', [
             // 'notes' => $noteRepository->findAll()
-            'notes' => $this->getUser()->getNotes()
+            // 'notes' => $this->getUser()->getNotes()
         ]);
     }
 
@@ -75,9 +76,7 @@ class NoteController extends AbstractController
 
             // Manip de données
             // Liaison d'un utilisateur à la note
-            $note->setUser($this->getUser());
-            // dd($note);
-
+            $note->setUser( $this->getUser() );
 
             // Requete 'INSERT INTO ....'
             // Requete 'UPDATE ...'
@@ -147,10 +146,19 @@ class NoteController extends AbstractController
      * @Route("/{id}/delete", name=":delete")
      * Route("/note/{id}/delete", name="note:delete")
      */
-    public function delete($id)
+    public function delete(Note $note, Request $request)
     {
+        if ($request->getMethod() == 'DELETE')
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($note); // PAS DE PERSIST
+            $em->flush();
+
+            return $this->redirectToRoute('note:index');
+        }
+
         return $this->render('note/delete.html.twig', [
-            'id' => $id
+            'note' => $note
         ]);
     }
 }

@@ -5,20 +5,23 @@
 {% block body %}
 <div class="container">
 
-    <header class="page-header">
+    <header class="page-header py-5 px-5">
         <h2 class="page-title">Mes Notes</h2>
     </header>
 
-    <div class="actions">
-        <a href="{{ path('note:create') }}" class="btn btn-secondary">Ajouter une note</a>
-    </div>
-
-    <main>
+    <main class="py-5">
         <ul>
-        {% for note in notes %}
-            <li>{{ note.title }} ( <a href="{{ path('note:read', {id: note.id}) }}">voir</a> <a href="{{ path('note:update', {id: note.id}) }}">edit</a> )</li>
+        {% for note in app.user.notes %}
+            <li class="py-2">{{ note.title }} &emsp;
+                <a href="{{ path('note:read', {id: note.id}) }}" class="btn btn-secondary py-1">afficher</a>
+                <a href="{{ path('note:update', {id: note.id}) }}" class="btn btn-success py-1">modifier</a>
+                <a href="{{ path('note:delete', {id: note.id}) }}" class="btn btn-danger py-1">supprimer</a>
+            </li>
+        {% else %}
+            <li class="mt-2">Aucune note...</li>
         {% endfor %}
         </ul>
+        <a href="{{ path('note:create') }}" class="btn btn-info mt-3">Ajouter une nouvelle note</a>
     </main>
 
 </div>

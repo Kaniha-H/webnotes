@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
-{% set title = "Ajoute une catégorie" %}
+{% set title = "Ajouter une nouvelle catégorie" %}
 
 {% block title %}{{ title }}{% endblock %}
 
 {% block body %}
 <div class="container">
-    <header class="page-header">
+    <header class="page-header py-5 px-5">
         <h2 class="page-title">{{ title }}</h2>
     </header>
 
-    <main>
+    <main class="py-5">
         {% include "category/_form.html.twig" %}
+        <a href="{{ path('category:index') }}" class="mt-5 text-secondary">Retour</a>
     </main>
 </div>
 {% endblock %}

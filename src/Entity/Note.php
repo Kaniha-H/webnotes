@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\NoteRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\NoteRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=NoteRepository::class)
@@ -55,10 +56,11 @@ class Note
      */
     private $isArchived = false;
 
-      
+    
+    
     // RELATIONS
     // --
-
+    
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="notes")
      */

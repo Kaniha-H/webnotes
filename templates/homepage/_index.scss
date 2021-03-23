@@ -1,6 +1,15 @@
-.page-header {
-    border: 1px solid green;
+ul {
+    list-style-type: none;
+}
 
+ul li {
+    text-decoration: none;
+}
+
+.page-header {
+    font-size: 1em;
+    background-image: url('../../assets/img/placeholder.jpg');
+    color: #fff;
     .page-title {
         color: orange;
     }
